@@ -1,6 +1,6 @@
 // ****************************************************************************
 // * This file is part of the HqMAME project. It is distributed under         *
-// * GNU General Public License: http://www.gnu.org/licenses/gpl.html         *
+// * GNU General Public License: http://www.gnu.org/licenses/gpl-3.0          *
 // * Copyright (C) Zenju (zenju AT gmx DOT de) - All Rights Reserved          *
 // *                                                                          *
 // * Additionally and as a special exception, the author gives permission     *
@@ -30,6 +30,7 @@ namespace xbrz
 using a modified approach of xBR:
 http://board.byuu.org/viewtopic.php?f=10&t=2248
 - new rule set preserving small image features
+- highly optimized for performance
 - support alpha channel
 - support multithreading
 - support 64-bit architectures
@@ -51,7 +52,7 @@ enum class ColorFormat //from high bits -> low bits, 8 bit per channel
    in the target image data if you are using multiple threads for processing each enlarged slice!
 
 THREAD-SAFETY: - parts of the same image may be scaled by multiple threads as long as the [yFirst, yLast) ranges do not overlap!
-               - there is a minor inefficiency for the first row of a slice, so avoid processing single rows only
+               - there is a minor inefficiency for the first row of a slice, so avoid processing single rows only; suggestion: process 6 rows at least
 */
 void scale(size_t factor, //valid range: 2 - 5
            const uint32_t* src, uint32_t* trg, int srcWidth, int srcHeight,

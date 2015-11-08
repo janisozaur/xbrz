@@ -2,6 +2,11 @@
 |Changelog|
 ===========
 
+xBRZ 1.2 [2014-11-21]
+---------------------
+Further improved performance by over 30%
+
+
 xBRZ 1.1 [2014-11-02]
 ---------------------
 Support images with alpha channel
